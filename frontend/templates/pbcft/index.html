@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block title %}PBC/FT{% endblock %}
+
+{% block content %}
+<div class="area-header">
+    <div>
+        <h2>PBC/FT</h2>
+        <p class="area-subtitle">Prevenção de Branqueamento de Capitais e Financiamento do Terrorismo</p>
+    </div>
+    <button class="btn-primary" id="btn-novo">+ Novo investidor</button>
+</div>
+
+<!-- Tabela -->
+<div class="table-container">
+    <table id="tabela-pbcft">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Investimento</th>
+                <th>Fundos</th>
+                <th>Risco</th>
+                <th>PEP</th>
+                <th title="Documento de identificação | Comprovativo de morada | Comprovativo de rendimentos">Documentação</th>
+                <th>Entrada Compliance</th>
+                <th>Decisão</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="tbody-pbcft"></tbody>
+    </table>
+    <p id="empty-msg" class="empty-state hidden">Sem registos. Crie um novo investidor.</p>
+</div>
+
+<!-- Modal -->
+<div id="modal-pbcft" class="modal hidden">
+    <div class="modal-content modal-pbcft">
+        <h3 id="modal-title">Novo investidor</h3>
+
+        <form id="form-pbcft" autocomplete="off">
+            <input type="hidden" id="record-id">
+
+            <!-- Nome + Investimento -->
+            <div class="form-row-2">
+                <div>
+                    <label for="f-nome">Nome <span class="req">*</span></label>
+                    <input type="text" id="f-nome" placeholder="Nome completo do investidor">
+                </div>
+                <div>
+                    <label for="f-investimento">Investimento (€) <span class="req">*</span></label>
+                    <input type="number" id="f-investimento" min="0" step="0.01" placeholder="0,00">
+                </div>
+            </div>
+
+            <!-- Fundos (tags) -->
+            <div>
+                <label>Fundos em que vai investir</label>
+                <div class="tags-input-wrapper" id="tags-wrapper">
+                    <div id="tags-list" class="tags-list"></div>
+                    <input type="text" id="fundo-input" placeholder="Nome do fundo + Enter">
+                </div>
+                <p class="field-hint">Prima Enter ou vírgula para adicionar cada fundo.</p>
+            </div>
+
+            <!-- Risco + PEP -->
+            <div class="form-row-2">
+                <div>
+                    <label for="f-risco">Perfil de Risco <span class="req">*</span></label>
+                    <select id="f-risco">
+                        <option value="">— Seleccionar —</option>
+                        <option value="baixo">Baixo</option>
+                        <option value="medio">Médio</option>
+                        <option value="alto">Alto</option>
+                    </select>
+                </div>
+                <div class="pep-group">
+                    <label>PEP</label>
+                    <label class="toggle">
+                        <input type="checkbox" id="f-pep">
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label" id="pep-label">Não</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Documentação -->
+            <div>
+                <label>Documentação recebida</label>
+                <div class="doc-checks">
+                    <label class="doc-check-item">
+                        <input type="checkbox" id="f-doc-id">
+                        <span>Documento de identificação</span>
+                    </label>
+                    <label class="doc-check-item">
+                        <input type="checkbox" id="f-doc-morada">
+                        <span>Comprovativo de morada</span>
+                    </label>
+                    <label class="doc-check-item">
+                        <input type="checkbox" id="f-doc-rendimentos">
+                        <span>Comprovativo de rendimentos</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Datas -->
+            <div class="form-row-2">
+                <div>
+                    <label for="f-data-entrada">Entrada em Compliance</label>
+                    <input type="date" id="f-data-entrada">
+                </div>
+                <div>
+                    <label for="f-data-decisao">Data da decisão</label>
+                    <input type="date" id="f-data-decisao">
+                </div>
+            </div>
+
+            <!-- Tipo de decisão -->
+            <div>
+                <label for="f-tipo-decisao">Tipo de decisão</label>
+                <select id="f-tipo-decisao">
+                    <option value="">— Sem decisão —</option>
+                    <option value="info_solicitada">Informação solicitada</option>
+                    <option value="aprovado">Aprovado</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="modal-actions">
+            <button class="btn-secondary" id="btn-cancelar">Cancelar</button>
+            <button class="btn-primary" id="btn-guardar">Guardar</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/pbcft.js"></script>
+{% endblock %}

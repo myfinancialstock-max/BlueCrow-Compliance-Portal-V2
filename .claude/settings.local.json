@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip --version)",
+      "Bash(py --version)",
+      "Bash(py -3 --version)",
+      "Bash(py -3 -m venv .venv)",
+      "Bash(.venv/Scripts/pip install:*)",
+      "Bash(.venv/Scripts/python -c \"from pydantic_settings import BaseSettings\")",
+      "Bash(pg_isready)",
+      "Bash(powershell -Command \"Get-Service -Name postgresql* | Select-Object Name, Status\")",
+      "Bash(sc query:*)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Program Files \\(x86\\)/**)",
+      "Bash(cmd /c \"where psql 2>nul\")",
+      "Bash(cmd /c \"dir \\\\\"C:\\\\Program Files\\\\PostgreSQL\\\\\" 2>nul\")",
+      "Bash(cmd /c \"dir \\\\\"C:\\\\Program Files\\\\PostgreSQL\\\\\" && echo FOUND || echo NOT_FOUND\")",
+      "Bash(cmd /c dir \"C:\\\\Program Files\\\\PostgreSQL\")"
+    ]
+  }
+}

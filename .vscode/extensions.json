@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.pylance",
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "batisteo.vscode-django",
+    "esbenp.prettier-vscode"
+  ]
+}

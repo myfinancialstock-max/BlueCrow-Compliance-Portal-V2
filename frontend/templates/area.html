@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}{{ area_name }}{% endblock %}
+
+{% block content %}
+<div class="area-header">
+    <h2>{{ area_name }}</h2>
+
+    <!-- Acções de importação -->
+    <div class="import-actions">
+        <label class="btn-secondary">
+            Importar Excel
+            <input type="file" id="upload-excel" accept=".xlsx,.xls" hidden>
+        </label>
+        <label class="btn-secondary">
+            Importar PDF
+            <input type="file" id="upload-pdf" accept=".pdf" hidden>
+        </label>
+        <button class="btn-primary" id="btn-new-record">+ Novo registo</button>
+    </div>
+</div>
+
+<!-- Tabela de dados — colunas geradas dinamicamente -->
+<div class="table-container">
+    <table id="data-table">
+        <thead>
+            <tr id="table-headers">
+                <!-- Headers injectados via JS após definição -->
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Dados carregados via fetch() à API -->
+        </tbody>
+    </table>
+    <p id="empty-msg" class="empty-state">Sem registos. Importe um ficheiro ou crie manualmente.</p>
+</div>
+
+<!-- Modal de criação/edição manual — esqueleto -->
+<div id="modal-record" class="modal hidden">
+    <div class="modal-content">
+        <h3 id="modal-title">Novo registo</h3>
+        <form id="form-record">
+            <!-- Campos injectados dinamicamente após definição dos headers -->
+        </form>
+        <div class="modal-actions">
+            <button class="btn-secondary" id="btn-cancel">Cancelar</button>
+            <button class="btn-primary" id="btn-save">Guardar</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/area.js"></script>
+{% endblock %}

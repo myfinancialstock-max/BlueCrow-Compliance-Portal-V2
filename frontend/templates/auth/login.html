@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — BlueCrow</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body class="login-page">
+
+    <div class="login-box">
+        <h1>BlueCrow</h1>
+        <p class="subtitle">Compliance Portal</p>
+
+        <!-- Passo 1: Username + Password -->
+        <form id="form-login">
+            <label for="username">Utilizador</label>
+            <input type="text" id="username" name="username" required autocomplete="username">
+
+            <label for="password">Palavra-passe</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password">
+
+            <button type="submit">Entrar</button>
+            <p id="error-msg" class="error hidden"></p>
+        </form>
+
+        <!-- Passo 2: Código 2FA (oculto até ser necessário) -->
+        <form id="form-2fa" class="hidden">
+            <p>Introduza o código do seu autenticador.</p>
+            <input type="hidden" id="totp-username">
+            <label for="totp-code">Código 2FA</label>
+            <input type="text" id="totp-code" maxlength="6" inputmode="numeric" pattern="\d{6}" required>
+            <button type="submit">Verificar</button>
+            <p id="error-2fa" class="error hidden"></p>
+        </form>
+    </div>
+
+    <script src="/static/js/login.js"></script>
+</body>
+</html>

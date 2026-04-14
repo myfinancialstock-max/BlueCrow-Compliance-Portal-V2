@@ -1,0 +1,400 @@
+/* ============================================================
+   BlueCrow Compliance Portal — CSS base
+   Estrutura simples, sem frameworks externas.
+   Será expandido conforme o frontend evolui.
+   ============================================================ */
+
+:root {
+    --color-primary:    #1a3a5c;
+    --color-accent:     #2e7dd1;
+    --color-bg:         #f4f6f9;
+    --color-surface:    #ffffff;
+    --color-border:     #dde2ea;
+    --color-text:       #1e2a38;
+    --color-muted:      #6b7a8d;
+    --color-error:      #c0392b;
+    --sidebar-width:    220px;
+    --font:             system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: var(--font);
+    background: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--color-primary);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 0;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+}
+
+.sidebar-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 0 24px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar ul {
+    list-style: none;
+    flex: 1;
+    padding-top: 16px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 10px 24px;
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background 0.15s;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.sidebar-footer {
+    padding: 16px 24px 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.sidebar-footer a {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+/* ---- Conteúdo principal ---- */
+.content {
+    margin-left: var(--sidebar-width);
+    padding: 32px;
+    flex: 1;
+}
+
+/* ---- Login ---- */
+.login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+}
+
+.login-box {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 40px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-box h1 { font-size: 1.6rem; color: var(--color-primary); }
+.login-box .subtitle { color: var(--color-muted); margin-bottom: 28px; font-size: 0.9rem; }
+
+/* ---- Formulários ---- */
+form { display: flex; flex-direction: column; gap: 12px; }
+
+label { font-size: 0.85rem; font-weight: 600; color: var(--color-text); }
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    padding: 9px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: var(--font);
+    background: var(--color-surface);
+    color: var(--color-text);
+    transition: border-color 0.15s;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+/* ---- Botões ---- */
+.btn-primary, button[type="submit"] {
+    background: var(--color-accent);
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.15s;
+}
+
+.btn-primary:hover, button[type="submit"]:hover { opacity: 0.88; }
+
+.btn-secondary {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.btn-secondary:hover { background: var(--color-bg); }
+
+/* ---- Área: cabeçalho + acções ---- */
+.area-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.import-actions { display: flex; gap: 10px; align-items: center; }
+
+/* ---- Tabela ---- */
+.table-container { overflow-x: auto; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-surface);
+    border-radius: 8px;
+    overflow: hidden;
+    font-size: 0.88rem;
+}
+
+thead { background: var(--color-primary); color: #fff; }
+thead th { padding: 11px 14px; text-align: left; font-weight: 600; }
+tbody tr { border-bottom: 1px solid var(--color-border); }
+tbody tr:hover { background: #f0f4fa; }
+tbody td { padding: 10px 14px; }
+
+/* ---- Modal ---- */
+.modal {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: var(--color-surface);
+    border-radius: 8px;
+    padding: 32px;
+    width: 100%;
+    max-width: 520px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+/* ---- Utilitários ---- */
+.hidden { display: none !important; }
+.error  { color: var(--color-error); font-size: 0.85rem; margin-top: 4px; }
+.empty-state { color: var(--color-muted); margin-top: 24px; text-align: center; }
+
+
+/* ============================================================
+   PBC/FT — estilos específicos
+   ============================================================ */
+
+/* Cabeçalho de área */
+.area-subtitle { color: var(--color-muted); font-size: 0.82rem; margin-top: 2px; }
+
+/* Modal mais largo para formulários com mais campos */
+.modal-pbcft { max-width: 640px; }
+
+/* Layout 2 colunas dentro de um form */
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.form-row-2 > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Grupo PEP com toggle alinhado */
+.pep-group { display: flex; flex-direction: column; gap: 10px; }
+
+/* Hint abaixo de campos */
+.field-hint { font-size: 0.78rem; color: var(--color-muted); margin-top: 4px; }
+
+/* Campo obrigatório */
+.req { color: var(--color-error); }
+
+/* ---- Tags input ---- */
+.tags-input-wrapper {
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 6px 10px;
+    min-height: 44px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    cursor: text;
+    background: var(--color-surface);
+    transition: border-color 0.15s;
+}
+.tags-input-wrapper:focus-within { border-color: var(--color-accent); }
+
+.tags-list { display: contents; }
+
+.tag {
+    background: #e3edf8;
+    color: var(--color-primary);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+.tag-table { margin: 1px 2px; }
+
+.tag-remove {
+    cursor: pointer;
+    font-weight: 700;
+    color: var(--color-muted);
+    line-height: 1;
+}
+.tag-remove:hover { color: var(--color-error); }
+
+#fundo-input {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    padding: 2px 0 !important;
+    font-size: 0.9rem;
+    flex: 1;
+    min-width: 150px;
+    background: transparent;
+}
+
+/* ---- Badges ---- */
+.badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+.badge-baixo    { background: #d4edda; color: #155724; }
+.badge-medio    { background: #fff3cd; color: #856404; }
+.badge-alto     { background: #f8d7da; color: #721c24; }
+.badge-pep      { background: #f8d7da; color: #721c24; }
+.badge-nao-pep  { background: #e2e6ea; color: #495057; }
+.badge-aprovado { background: #d4edda; color: #155724; }
+.badge-info-sol { background: #fff3cd; color: #856404; }
+
+/* ---- Documentação (ícones na tabela) ---- */
+.doc-icons { display: flex; gap: 6px; justify-content: center; }
+.doc-icon  { font-size: 1rem; cursor: default; }
+
+/* ---- Célula de decisão ---- */
+.decisao-cell { display: flex; flex-direction: column; gap: 3px; }
+.decisao-data { font-size: 0.85rem; }
+
+/* ---- Células da tabela ---- */
+.td-nome   { font-weight: 500; max-width: 180px; }
+.td-num    { text-align: right; white-space: nowrap; }
+.td-date   { white-space: nowrap; font-size: 0.88rem; }
+.td-actions{ white-space: nowrap; display: flex; gap: 6px; }
+.td-vazio  { color: var(--color-muted); }
+
+/* ---- Botões pequenos ---- */
+.btn-sm { padding: 5px 10px !important; font-size: 0.8rem !important; }
+
+.btn-danger {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.15s;
+}
+.btn-danger:hover { opacity: 0.85; }
+
+/* ---- Toggle switch (PEP) ---- */
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+}
+.toggle input { display: none; }
+.toggle-slider {
+    width: 40px;
+    height: 22px;
+    background: var(--color-border);
+    border-radius: 11px;
+    position: relative;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+.toggle-slider::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    top: 3px;
+    left: 3px;
+    transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle input:checked + .toggle-slider { background: var(--color-accent); }
+.toggle input:checked + .toggle-slider::after { left: 21px; }
+.toggle-label { font-size: 0.9rem; color: var(--color-text); min-width: 28px; }
+
+/* ---- Checkboxes de documentação ---- */
+.doc-checks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+}
+.doc-check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.doc-check-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-accent);
+    flex-shrink: 0;
+}

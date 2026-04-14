@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BlueCrow{% endblock %} — Compliance Portal</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+
+    {% block nav %}
+    <nav class="sidebar">
+        <div class="sidebar-logo">BlueCrow</div>
+        <ul>
+            <li><a href="/compliance">Compliance</a></li>
+            <li><a href="/controlo-interno">Controlo Interno</a></li>
+            <li><a href="/pbcft">PBC/FT</a></li>
+            <li><a href="/cmvm">CMVM</a></li>
+            <li><a href="/pareceres">Pareceres</a></li>
+            <li><a href="/rgpd">RGPD</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="/auth/logout">Terminar sessão</a>
+        </div>
+    </nav>
+    {% endblock %}
+
+    <main class="content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="/static/js/main.js"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>
